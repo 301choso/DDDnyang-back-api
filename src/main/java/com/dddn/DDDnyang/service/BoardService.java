@@ -19,4 +19,9 @@ public class BoardService {
     public List<Board> listBoard(Map<String, Object> paramMap) {
         return boardRepository.findAll();
     }
+
+    public Board saveBoard(Board board) {
+        return boardRepository.save(board);
+    }
+
 }

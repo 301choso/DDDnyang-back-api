@@ -1,9 +1,6 @@
 package com.dddn.DDDnyang.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -14,7 +11,7 @@ import java.sql.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
 @SuperBuilder
 @Entity
