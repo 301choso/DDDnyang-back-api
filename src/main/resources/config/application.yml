@@ -27,3 +27,5 @@ spring:
   file-upload:
     path: ${file.upload.path}
     access-file-extension: gif,jpg,jpeg,png
+server:
+  port: 8090

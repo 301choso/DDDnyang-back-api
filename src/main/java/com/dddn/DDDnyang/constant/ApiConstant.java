@@ -7,4 +7,5 @@ public class ApiConstant {
 
     public static final String BOARD = CommonApiConstant.API_PATH_PREFIX + "/board";
 
+    public static final String MEMBER = CommonApiConstant.API_PATH_PREFIX + "/member";
 }

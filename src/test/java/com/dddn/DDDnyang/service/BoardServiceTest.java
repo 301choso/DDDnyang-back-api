@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -33,7 +33,7 @@ class BoardServiceTest {
         board.setBoard_id(124L);
         board.setBoard_title("제목123");
         board.setBoard_content("내용");
-        board.setBoard_date(new java.sql.Date(2022-12-12));
+        board.setBoard_date(LocalDateTime.now());
         board.setBoard_views(0L);
         board.setBoard_like_it(0L);
         board.setBoard_category("공지");

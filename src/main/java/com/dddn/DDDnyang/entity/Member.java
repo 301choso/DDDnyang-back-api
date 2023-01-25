@@ -15,25 +15,23 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-public class Board {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long board_id;
-
-    private String board_title;
-
-    private String board_content;
-
-    private LocalDateTime board_date;
-
-    private Long board_views;
-
-    private Long board_like_it;
-
-    private String board_category;
+    private Long member_id;
 
     private Long member_num;
 
-    private String show_yn;
+    private String member_email;
+
+    private String member_call;
+
+    private String member_name;
+
+    private String member_yn;
+
+    private String member_pw;
+
+    private LocalDateTime member_join_date;
 
 }
