@@ -1,5 +1,6 @@
 package com.dddn.DDDnyang.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -31,5 +32,10 @@ public class Image {
     private Long board_id;
 
     private Long member_num;
+
+    @JsonIgnore
+    public String getRefKey() {
+        return String.valueOf(this.image_id);
+    }
 
 }
