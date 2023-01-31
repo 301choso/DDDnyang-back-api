@@ -19,8 +19,8 @@ spring:
 
   # 데이터베이스 접속 정보
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/dddn
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost/dddn
     username: ${database.username}
     password: ${database.password}
   # 첨부파일

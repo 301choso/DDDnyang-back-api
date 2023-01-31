@@ -32,7 +32,8 @@ public class ImageController {
     }
 
     @PostMapping()
-    public ResponseEntity insertImage(@RequestParam Image image, @RequestParam("file")MultipartFile file) {
+    @ResponseBody
+    public ResponseEntity insertImage(@ModelAttribute Image image, @RequestParam("file") MultipartFile file) {
         imageService.uploadImage(image, file);
         return ResponseEntity.status(HttpStatus.OK).body(image);
     }

@@ -34,9 +34,7 @@ public class ImageService {
             throw  new RuntimeException("잘못된 파일입니다.");
         }
 
-        /*String mimeType = file.getContentType(); // 미디어타입
         String displayName = file.getOriginalFilename();
-        long fileSize = file.getSize();*/
         String type = image.getImage_sort();
         UUID uploadId = UUID.randomUUID();
         LocalDateTime regDt = LocalDateTime.now();
@@ -52,12 +50,15 @@ public class ImageService {
                throw new RuntimeException("첨부파일 등록일자가 없습니다.");
            }
            String yearMonth = regDt.format(DateTimeFormatter.ofPattern("yyyyMM"));
-           savePath = type + "/" + yearMonth;
+           savePath = type + "/" + yearMonth + "/" + uploadId;
 
             boolean isSuccessUpdate = minioService.fileUpload(savePath, file);
             if(!isSuccessUpdate) {
                 throw new RuntimeException("첨부파일 저장에 실패했습니다.");
             } else {
+                image.setImage_file_original_name(displayName);
+                image.setImage_file_name(uploadId.toString());
+                image.setImage_date(regDt);
                 imageRepository.save(image);
             }
         }
