@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -31,11 +32,23 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(imageList);
     }
 
+    @GetMapping("/{image_id}")
+    public ResponseEntity<String> getImage(@PathVariable("image_id") Long image_id) throws IOException {
+        String imageFile = imageService.getImage(image_id);
+        return ResponseEntity.status(HttpStatus.OK).body(imageFile);
+    }
+
     @PostMapping()
     @ResponseBody
     public ResponseEntity insertImage(@ModelAttribute Image image, @RequestParam("file") MultipartFile file) {
         imageService.uploadImage(image, file);
         return ResponseEntity.status(HttpStatus.OK).body(image);
+    }
+
+    @DeleteMapping("/{image_id}")
+    public ResponseEntity deleteImage(@PathVariable("image_id") Long image_id) {
+        imageService.deleteImage(image_id);
+        return ResponseEntity.status(HttpStatus.OK).body(image_id);
     }
 
 }

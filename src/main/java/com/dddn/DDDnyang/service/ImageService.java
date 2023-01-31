@@ -4,9 +4,12 @@ import com.dddn.DDDnyang.entity.Image;
 import com.dddn.DDDnyang.repository.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -24,6 +27,20 @@ public class ImageService {
 
     public List<Image> listImage(Map<String, Object> paramMap) {
         return imageRepository.findAll();
+    }
+
+    /**
+     * 이미지 조회
+     */
+    public String getImage(Long image_id) throws IOException {
+        String path = getFilePath(image_id);
+        InputStream stream = minioService.fileDownload(path);
+        int content;
+        final StringBuilder imageFile = new StringBuilder();
+        while((content = stream.read()) != -1) {
+            imageFile.append(content);
+        }
+        return imageFile.toString();
     }
 
     /**
@@ -63,6 +80,25 @@ public class ImageService {
             }
         }
         return uploadId;
+    }
+
+    /**
+     * 이미지 삭제
+     */
+    public boolean deleteImage(Long image_id) {
+        String path = getFilePath(image_id);
+        if (minioService.fileRemove(path)) {
+            imageRepository.deleteById(image_id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @NotNull
+    private String getFilePath(Long image_id) {
+        Image image = imageRepository.findById(image_id).orElseThrow();
+        return image.getImage_sort() + "/" + image.getImage_date().format(DateTimeFormatter.ofPattern("yyyyMM")) + "/" + image.getImage_file_name();
     }
 
 }
