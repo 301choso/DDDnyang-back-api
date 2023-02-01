@@ -18,20 +18,20 @@ import java.time.LocalDateTime;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long member_id;
+    private Long memberNum;
 
-    private Long member_num;
+    private String memberId;
 
-    private String member_email;
+    private String memberEmail;
 
-    private String member_call;
+    private String memberCall;
 
-    private String member_name;
+    private String memberName;
 
-    private String member_yn;
+    private String memberYn;
 
-    private String member_pw;
+    private String memberPw;
 
-    private LocalDateTime member_join_date;
+    private LocalDateTime memberJoinDate;
 
 }

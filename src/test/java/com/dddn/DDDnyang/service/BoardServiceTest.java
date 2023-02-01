@@ -2,8 +2,6 @@ package com.dddn.DDDnyang.service;
 
 import com.dddn.DDDnyang.entity.Board;
 import com.dddn.DDDnyang.repository.BoardRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,23 +22,23 @@ class BoardServiceTest {
     @Test
     public void 제목확인() {
         List<Board> bList = boardRepository.findAll();
-        assertEquals("제목", bList.get(0).getBoard_title());
+        assertEquals("제목", bList.get(0).getBoardTitle());
     }
 
     @Test
     public void 입력확인() {
         Board board = new Board();
-        board.setBoard_id(124L);
-        board.setBoard_title("제목123");
-        board.setBoard_content("내용");
-        board.setBoard_date(LocalDateTime.now());
-        board.setBoard_views(0L);
-        board.setBoard_like_it(0L);
-        board.setBoard_category("공지");
-        board.setMember_num(1L);
-        board.setShow_yn("Y");
+        board.setBoardId(124L);
+        board.setBoardTitle("제목123");
+        board.setBoardContent("내용");
+        board.setBoardDate(LocalDateTime.now());
+        board.setBoardViews(0L);
+        board.setBoardLikeIt(0L);
+        board.setBoardCategory("공지");
+        board.setMemberNum(1L);
+        board.setShowYn("Y");
         Board save = boardRepository.save(board);
-        assertEquals(save.getBoard_title(), "제목123");
+        assertEquals(save.getBoardTitle(), "제목123");
     }
 
 }

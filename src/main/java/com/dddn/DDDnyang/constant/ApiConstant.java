@@ -10,4 +10,6 @@ public class ApiConstant {
     public static final String MEMBER = CommonApiConstant.API_PATH_PREFIX + "/member";
 
     public static final String IMAGE = CommonApiConstant.API_PATH_PREFIX + "/image";
+
+    public static final String AUTH = CommonApiConstant.API_PATH_PREFIX + "/auth";
 }

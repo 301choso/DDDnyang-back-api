@@ -32,8 +32,8 @@ public class ImageService {
     /**
      * 이미지 조회
      */
-    public String getImage(Long image_id) throws IOException {
-        String path = getFilePath(image_id);
+    public String getImage(Long imageId) throws IOException {
+        String path = getFilePath(imageId);
         InputStream stream = minioService.fileDownload(path);
         int content;
         final StringBuilder imageFile = new StringBuilder();
@@ -52,7 +52,7 @@ public class ImageService {
         }
 
         String displayName = file.getOriginalFilename();
-        String type = image.getImage_sort();
+        String type = image.getImageSort();
         UUID uploadId = UUID.randomUUID();
         LocalDateTime regDt = LocalDateTime.now();
         String savePath = "";
@@ -73,9 +73,9 @@ public class ImageService {
             if(!isSuccessUpdate) {
                 throw new RuntimeException("첨부파일 저장에 실패했습니다.");
             } else {
-                image.setImage_file_original_name(displayName);
-                image.setImage_file_name(uploadId.toString());
-                image.setImage_date(regDt);
+                image.setImageFileOriginalName(displayName);
+                image.setImageFileName(uploadId.toString());
+                image.setImageDate(regDt);
                 imageRepository.save(image);
             }
         }
@@ -85,10 +85,10 @@ public class ImageService {
     /**
      * 이미지 삭제
      */
-    public boolean deleteImage(Long image_id) {
-        String path = getFilePath(image_id);
+    public boolean deleteImage(Long imageId) {
+        String path = getFilePath(imageId);
         if (minioService.fileRemove(path)) {
-            imageRepository.deleteById(image_id);
+            imageRepository.deleteById(imageId);
             return true;
         } else {
             return false;
@@ -96,9 +96,9 @@ public class ImageService {
     }
 
     @NotNull
-    private String getFilePath(Long image_id) {
-        Image image = imageRepository.findById(image_id).orElseThrow();
-        return image.getImage_sort() + "/" + image.getImage_date().format(DateTimeFormatter.ofPattern("yyyyMM")) + "/" + image.getImage_file_name();
+    private String getFilePath(Long imageId) {
+        Image image = imageRepository.findById(imageId).orElseThrow(() -> new RuntimeException("이미지가 없습니다."));
+        return image.getImageSort() + "/" + image.getImageDate().format(DateTimeFormatter.ofPattern("yyyyMM")) + "/" + image.getImageFileName();
     }
 
 }

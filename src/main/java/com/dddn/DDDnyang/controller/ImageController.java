@@ -32,9 +32,9 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(imageList);
     }
 
-    @GetMapping("/{image_id}")
-    public ResponseEntity<String> getImage(@PathVariable("image_id") Long image_id) throws IOException {
-        String imageFile = imageService.getImage(image_id);
+    @GetMapping("/{imageId}")
+    public ResponseEntity<String> getImage(@PathVariable("imageId") Long imageId) throws IOException {
+        String imageFile = imageService.getImage(imageId);
         return ResponseEntity.status(HttpStatus.OK).body(imageFile);
     }
 
@@ -45,10 +45,10 @@ public class ImageController {
         return ResponseEntity.status(HttpStatus.OK).body(image);
     }
 
-    @DeleteMapping("/{image_id}")
-    public ResponseEntity deleteImage(@PathVariable("image_id") Long image_id) {
-        imageService.deleteImage(image_id);
-        return ResponseEntity.status(HttpStatus.OK).body(image_id);
+    @DeleteMapping("/{imageId}")
+    public ResponseEntity deleteImage(@PathVariable("imageId") Long imageId) {
+        imageService.deleteImage(imageId);
+        return ResponseEntity.status(HttpStatus.OK).body(imageId);
     }
 
 }

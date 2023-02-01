@@ -36,7 +36,7 @@ public class BoardController {
     public ResponseEntity<Map<String, Boolean>> saveBoard(
             @RequestBody Board board
     ) {
-        Boolean isSuccess = boardService.saveBoard(board).getBoard_id() > 0;
+        Boolean isSuccess = boardService.saveBoard(board).getBoardId() > 0;
         return ResponseEntity.status(isSuccess == true? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(null);
     }
 

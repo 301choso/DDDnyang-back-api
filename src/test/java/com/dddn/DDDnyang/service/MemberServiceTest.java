@@ -20,14 +20,14 @@ class MemberServiceTest {
     @Test
     public void 멤버확인() {
         /*Member member = memberService.saveMember(Member.builder()
-                .member_id(1L)
-                .member_num(1L)
-                .member_pw("1234")
-                .member_yn("Y")
-                .member_email("jj@naver.com")
-                .member_call("01012341234")
-                .member_join_date(LocalDateTime.now()).build());*/
+                .memberId(1L)
+                .memberNum(1L)
+                .memberPw("1234")
+                .memberYn("Y")
+                .memberEmail("jj@naver.com")
+                .memberCall("01012341234")
+                .memberJoinDate(LocalDateTime.now()).build());*/
         List<Member> mList = memberService.listMember(new HashMap<>());
-        assertEquals(1L, mList.get(0).getMember_id());
+        assertEquals(1L, mList.get(0).getMemberId());
     }
 }

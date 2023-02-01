@@ -19,23 +19,23 @@ import java.time.LocalDateTime;
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long image_id;
+    private Long imageId;
 
-    private String image_sort;
+    private String imageSort;
 
-    private String image_file_original_name;
+    private String imageFileOriginalName;
 
-    private String image_file_name;
+    private String imageFileName;
 
-    private LocalDateTime image_date;
+    private LocalDateTime imageDate;
 
-    private Long board_id;
+    private Long boardId;
 
-    private Long member_num;
+    private Long memberNum;
 
     @JsonIgnore
     public String getRefKey() {
-        return String.valueOf(this.image_id);
+        return String.valueOf(this.imageId);
     }
 
 }

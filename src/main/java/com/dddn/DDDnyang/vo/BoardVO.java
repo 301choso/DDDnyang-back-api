@@ -17,15 +17,15 @@ import java.sql.Date;
 @AllArgsConstructor
 @Builder
 public class BoardVO {
-    private int board_id;
-    private String board_title;
-    private String board_content;
-    private Date board_date;
-    private int board_views;
-    private int board_like_it;
-    private String board_category;
-    private int member_num;
+    private int boardId;
+    private String boardTitle;
+    private String boardContent;
+    private Date boardDate;
+    private int boardViews;
+    private int boardLikeIt;
+    private String boardCategory;
+    private int memberNum;
     private String fileInfo;
-    private String show_yn;
+    private String showYn;
 
 }

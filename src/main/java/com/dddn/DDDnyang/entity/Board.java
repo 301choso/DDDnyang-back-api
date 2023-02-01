@@ -18,22 +18,22 @@ import java.time.LocalDateTime;
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long board_id;
+    private Long boardId;
 
-    private String board_title;
+    private String boardTitle;
 
-    private String board_content;
+    private String boardContent;
 
-    private LocalDateTime board_date;
+    private LocalDateTime boardDate;
 
-    private Long board_views;
+    private Long boardViews;
 
-    private Long board_like_it;
+    private Long boardLikeIt;
 
-    private String board_category;
+    private String boardCategory;
 
-    private Long member_num;
+    private Long memberNum;
 
-    private String show_yn;
+    private String showYn;
 
 }
