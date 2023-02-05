@@ -1,19 +1,15 @@
 package com.dddn.DDDnyang.entity;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor
-@SuperBuilder
 @Entity
 public class Member {
     @Id
@@ -34,4 +30,12 @@ public class Member {
 
     private LocalDateTime memberJoinDate;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "member")
+    private List<Session> sessions = new ArrayList<>();
+
+    public void addSession() {
+        sessions.add(Session.builder()
+                .member(this)
+                .build());
+    }
 }
