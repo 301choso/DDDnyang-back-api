@@ -33,9 +33,11 @@ public class Member {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "member")
     private List<Session> sessions = new ArrayList<>();
 
-    public void addSession() {
-        sessions.add(Session.builder()
+    public Session addSession() {
+        Session session = Session.builder()
                 .member(this)
-                .build());
+                .build();
+        sessions.add(session);
+        return session;
     }
 }

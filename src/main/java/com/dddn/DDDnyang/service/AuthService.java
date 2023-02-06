@@ -1,6 +1,7 @@
 package com.dddn.DDDnyang.service;
 
 import com.dddn.DDDnyang.entity.Member;
+import com.dddn.DDDnyang.entity.Session;
 import com.dddn.DDDnyang.exception.InvalidSigninInformation;
 import com.dddn.DDDnyang.repository.MemberRepository;
 import com.dddn.DDDnyang.vo.LoginVO;
@@ -16,9 +17,10 @@ public class AuthService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public void signin(LoginVO loginVO) {
+    public String signin(LoginVO loginVO) {
         Member member = memberRepository.findByMemberIdAndMemberPw(loginVO.getMemberId(), loginVO.getMemberPw())
                 .orElseThrow(InvalidSigninInformation::new);
-        member.addSession();
+        Session session = member.addSession();
+        return session.getAccessToken();
     }
 }
