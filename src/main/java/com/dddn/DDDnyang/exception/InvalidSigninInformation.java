@@ -1,4 +1,4 @@
-package com.dddn.DDDnyang.excrption;
+package com.dddn.DDDnyang.exception;
 
 public class InvalidSigninInformation extends RuntimeException{
 

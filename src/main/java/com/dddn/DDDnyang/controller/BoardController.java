@@ -3,12 +3,14 @@ package com.dddn.DDDnyang.controller;
 import com.dddn.DDDnyang.constant.ApiConstant;
 import com.dddn.DDDnyang.entity.Board;
 import com.dddn.DDDnyang.service.BoardService;
+import com.dddn.DDDnyang.vo.BoardVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -34,9 +36,9 @@ public class BoardController {
 
     @PostMapping
     public ResponseEntity<Map<String, Boolean>> saveBoard(
-            @RequestBody Board board
+            @RequestBody @Valid BoardVO boardVO
     ) {
-        Boolean isSuccess = boardService.saveBoard(board).getBoardId() > 0;
+        Boolean isSuccess = boardService.saveBoard(boardVO).getBoardId() > 0;
         return ResponseEntity.status(isSuccess == true? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(null);
     }
 

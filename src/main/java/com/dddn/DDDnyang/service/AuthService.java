@@ -1,7 +1,7 @@
 package com.dddn.DDDnyang.service;
 
 import com.dddn.DDDnyang.entity.Member;
-import com.dddn.DDDnyang.excrption.InvalidSigninInformation;
+import com.dddn.DDDnyang.exception.InvalidSigninInformation;
 import com.dddn.DDDnyang.repository.MemberRepository;
 import com.dddn.DDDnyang.vo.LoginVO;
 import lombok.RequiredArgsConstructor;

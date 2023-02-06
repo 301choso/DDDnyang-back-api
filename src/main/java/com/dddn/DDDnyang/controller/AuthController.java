@@ -6,7 +6,6 @@ import com.dddn.DDDnyang.service.AuthService;
 import com.dddn.DDDnyang.vo.LoginVO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,6 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @Secured({"ROLE_SUPER"})
     @PostMapping("/login")
     public void login(@RequestBody LoginVO loginVO) {
         authService.signin(loginVO);

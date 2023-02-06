@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 /**
  * 게시글 VO
@@ -17,15 +18,27 @@ import java.sql.Date;
 @AllArgsConstructor
 @Builder
 public class BoardVO {
+
     private int boardId;
+
+    @NotBlank(message = "제목을 입력해주세요.")
     private String boardTitle;
+
+    @NotBlank(message = "내용을 입력해주세요.")
     private String boardContent;
-    private Date boardDate;
+
+    private LocalDateTime boardDate;
+
     private int boardViews;
+
     private int boardLikeIt;
+
     private String boardCategory;
-    private int memberNum;
+
+    private Long memberNum;
+
     private String fileInfo;
+
     private String showYn;
 
 }
