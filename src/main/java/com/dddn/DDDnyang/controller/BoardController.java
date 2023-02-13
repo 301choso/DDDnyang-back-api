@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * 게시글 REST 컨트롤러 클래스
@@ -32,6 +33,14 @@ public class BoardController {
     ) {
         List<Board> boardList = boardService.listBoard(paramMap);
         return ResponseEntity.status(HttpStatus.OK).body(boardList);
+    }
+
+    @GetMapping("/{boardId}")
+    public ResponseEntity<Board> getBoard(
+            @PathVariable Long boardId
+    ) {
+        Optional<Board> board = boardService.getBoard(boardId);
+        return ResponseEntity.status(HttpStatus.OK).body(board.orElseThrow(() -> new RuntimeException("게시물이 존재하지 않습니다.")));
     }
 
     @PostMapping

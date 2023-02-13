@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -20,6 +21,10 @@ public class BoardService {
 
     public List<Board> listBoard(Map<String, Object> paramMap) {
         return boardRepository.findAll();
+    }
+
+    public Optional<Board> getBoard(Long boardId) {
+        return boardRepository.findById(boardId);
     }
 
     public Board saveBoard(BoardVO boardVO) {
