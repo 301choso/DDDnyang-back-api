@@ -51,4 +51,11 @@ public class BoardController {
         return ResponseEntity.status(isSuccess == true? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(null);
     }
 
+    @PatchMapping("/{boardId}")
+    public ResponseEntity<Map<String, Boolean>> editBoard(
+            @RequestBody @Valid Board board
+    ) {
+        Boolean isSuccess = boardService.editBoard(board).getBoardId() > 0;
+        return ResponseEntity.status(isSuccess == true? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(null);
+    }
 }
